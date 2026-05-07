@@ -14,6 +14,20 @@ This project provides a real-time engine dashboard featuring:
 - Touchscreen controls
 - Warning and status system
 
+## Screenshots
+
+![Dashboard](images/dashboard.png)
+
+Examples:
+- Main dashboard
+- Fuel information screen
+- Battery diagnostics screen
+- Logic view
+- Vehicle integration
+
+---
+
+
 ## Features
 
 ### Engine Monitoring
