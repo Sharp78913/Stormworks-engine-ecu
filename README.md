@@ -53,7 +53,7 @@ This project provides a real-time engine dashboard featuring:
 ## Technical Notes
 
 The display system is designed for:
-- Stormworks 96x96 monitor
+- Stormworks Width x Height - > 32x32, 96x32, 96x64 monitor
 - Real-time engine diagnostics
 - Low-overhead rendering
 - Touchscreen interaction
