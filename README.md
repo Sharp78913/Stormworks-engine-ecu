@@ -16,7 +16,7 @@ This project provides a real-time engine dashboard featuring:
 
 ## Screenshots
 
-![Dashboard](images/dashboard.png)
+![Dashboard](Images/573090_20260507150212_1.png)
 
 Examples:
 - Main dashboard
