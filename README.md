@@ -17,13 +17,8 @@ This project provides a real-time engine dashboard featuring:
 ## Screenshots
 
 ![Dashboard](Images/573090_20260507150212_1.png)
-
-Examples:
-- Main dashboard
-- Fuel information screen
-- Battery diagnostics screen
-- Logic view
-- Vehicle integration
+![Engine Running](Images/573090_20260507150303_1.png)
+![internal logic](Images/573090_20260507144803_1.png)
 
 ---
 
