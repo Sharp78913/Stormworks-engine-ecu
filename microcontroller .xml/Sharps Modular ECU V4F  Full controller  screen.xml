@@ -1,0 +1,2279 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<microprocessor name="Sharps Modular ECU V4E - Full controller + screen" description="Version 4E" width="5" length="4" id_counter="819" id_counter_node="58" sym0="32768" sym1="57344" sym2="44750" sym3="2594" sym4="2606" sym5="2594" sym6="2766" sym8="61431" sym10="7074" sym11="10914" sym12="10922" sym13="10922" sym14="7102">
+	<nodes>
+		<n id="1" component_id="2">
+			<node label="Cylinder Data" mode="1" type="5" description="Connect to any cylinder, Engine will not run without this">
+				<position x="4"/>
+			</node>
+		</n>
+		<n id="2" component_id="8">
+			<node label="Air Throttle" type="1" description="Connect to air manifolds">
+				<position z="1"/>
+			</node>
+		</n>
+		<n id="3" component_id="7">
+			<node label="Fuel Throttle" type="1" description="Connect to fuel manifolds">
+				<position x="1" z="1"/>
+			</node>
+		</n>
+		<n id="6" component_id="74">
+			<node label="Engine RPS" mode="1" type="1" description="Connect to driveshaft rps output"/>
+		</n>
+		<n id="7" component_id="101">
+			<node label="starter motors" type="1" description="For electric starters, can delete if not needed">
+				<position x="2" z="1"/>
+			</node>
+		</n>
+		<n id="10" component_id="97">
+			<node label="Auxilery clutch, alternators etc" type="1" description="sets to 1 when ECU is on,">
+				<position z="2"/>
+			</node>
+		</n>
+		<n id="12" component_id="103">
+			<node label="fans" description="Turns fans on at set temp">
+				<position x="3"/>
+			</node>
+		</n>
+		<n id="19" component_id="174">
+			<node label="screen, only visualizes data. Not needed" type="6" description="works on 1x1, 3x1 and 3x2 screens">
+				<position x="3" z="2"/>
+			</node>
+		</n>
+		<n id="21" component_id="414">
+			<node label="Engine on/off" mode="1" description="Toggle/key button, dont forget cylinder composite data">
+				<position x="2"/>
+			</node>
+		</n>
+		<n id="28" component_id="283">
+			<node label="Monitor touch, only visualizes data. Not needed" mode="1" type="5" description="delete if not using monitor">
+				<position x="4" z="1"/>
+			</node>
+		</n>
+		<n id="34" component_id="364">
+			<node label="Electric pumps" description="Anything you want to be on when engine is turned on">
+				<position x="3" z="1"/>
+			</node>
+		</n>
+		<n id="35" component_id="367">
+			<node label="Main Clutch" type="1" description="This is the clutch to give power to your wheels, props,gen etc. ignore if you dont need it">
+				<position x="1" z="2"/>
+			</node>
+		</n>
+		<n id="37" component_id="392">
+			<node label="battery" mode="1" type="1" description="delete if not using monitor">
+				<position x="2" z="3"/>
+			</node>
+		</n>
+		<n id="38" component_id="394">
+			<node label="Fuel litres" mode="1" type="1" description="delete if not using monitor">
+				<position x="3" z="3"/>
+			</node>
+		</n>
+		<n id="39" component_id="396">
+			<node label="Fuel capacity" mode="1" type="1" description="delete if not using monitor">
+				<position x="4" z="3"/>
+			</node>
+		</n>
+		<n id="55" component_id="676">
+			<node label="Throttle" mode="1" type="1" description="The input signal to be processed.">
+				<position x="1"/>
+			</node>
+		</n>
+		<n id="56" component_id="682">
+			<node label="Starter" description="The input signal to be processed.">
+				<position x="2" z="2"/>
+			</node>
+		</n>
+		<n id="57" component_id="688">
+			<node label="Gen, For calculations for display when using as generator" mode="1" type="1" description="delete if not using monitor">
+				<position x="4" z="2"/>
+			</node>
+		</n>
+		<n id="58" component_id="722">
+			<node label="Composite Data Out" type="5" description="Check Lua block / description for channel allocation">
+				<position x="1" z="3"/>
+			</node>
+		</n>
+	</nodes>
+	<group>
+		<data type="857743929">
+			<inputs/>
+			<outputs/>
+		</data>
+		<components>
+			<c type="31">
+				<object id="11">
+					<pos x="14.5" y="13.25"/>
+					<in1 component_id="2"/>
+				</object>
+			</c>
+			<c type="31">
+				<object id="12" i="1">
+					<pos x="14.5" y="13"/>
+					<in1 component_id="2"/>
+				</object>
+			</c>
+			<c type="10">
+				<object id="14" e="clamp((x*1000)/(clamp(y,0.0000001,1)*1000),0,25)">
+					<pos x="16" y="12.75"/>
+					<in1 component_id="11"/>
+					<in2 component_id="12"/>
+				</object>
+			</c>
+			<c type="36">
+				<object id="55" e="(clamp(z+w*(x-y),0.3,1))">
+					<pos x="19" y="10.75"/>
+					<in1 component_id="461"/>
+					<in2 component_id="193"/>
+					<in3 component_id="55"/>
+					<in4 component_id="685"/>
+				</object>
+			</c>
+			<c type="7">
+				<object id="89">
+					<pos x="-1.5" y="12.25"/>
+					<in1 component_id="74"/>
+					<in2 component_id="484"/>
+				</object>
+			</c>
+			<c type="31">
+				<object id="106" i="2">
+					<pos x="-16" y="8"/>
+					<in1 component_id="2"/>
+				</object>
+			</c>
+			<c type="17">
+				<object id="107">
+					<pos x="-14.75" y="5"/>
+					<in1 component_id="106"/>
+					<in2 component_id="109"/>
+				</object>
+			</c>
+			<c type="17">
+				<object id="110">
+					<pos x="-14.75" y="7.25"/>
+					<in1 component_id="106"/>
+					<in2 component_id="638"/>
+				</object>
+			</c>
+			<c type="25">
+				<object id="114">
+					<pos x="-13.5" y="7.25"/>
+					<in1 component_id="110"/>
+					<in2 component_id="115"/>
+				</object>
+			</c>
+			<c type="18">
+				<object id="115">
+					<pos x="-14.75" y="6.5"/>
+					<in1 component_id="106"/>
+					<in2 component_id="637"/>
+				</object>
+			</c>
+			<c type="18">
+				<object id="119">
+					<pos x="-9.5" y="3.5"/>
+					<in1 component_id="74"/>
+					<in2 component_id="126"/>
+				</object>
+			</c>
+			<c type="15">
+				<object id="122">
+					<pos x="-11" y="8.75"/>
+					<n text="1" value="1"/>
+				</object>
+			</c>
+			<c type="15">
+				<object id="126">
+					<pos x="-11" y="3.5"/>
+					<n text="2.25" value="2.25"/>
+				</object>
+			</c>
+			<c type="22">
+				<object id="142">
+					<pos x="-9.75" y="8.25"/>
+					<in1 component_id="122"/>
+					<in3 component_id="235"/>
+				</object>
+			</c>
+			<c type="17">
+				<object id="190">
+					<pos x="-14.75" y="5.75"/>
+					<in1 component_id="106"/>
+					<in2 component_id="636"/>
+				</object>
+			</c>
+			<c type="10">
+				<object id="193" e="x-clamp(x-y,0,10)*z">
+					<pos x="17.5" y="11.75"/>
+					<in1 component_id="194"/>
+					<in2 component_id="195"/>
+					<in3 component_id="752"/>
+				</object>
+			</c>
+			<c type="44">
+				<object id="209" l="Made by sharp">
+					<pos x="-45.25" y="-50.25"/>
+				</object>
+			</c>
+			<c type="46">
+				<object id="235" e="!(y&amp;x)&amp;z">
+					<pos x="-12.25" y="6.75"/>
+					<in1 component_id="640"/>
+					<in2 component_id="114"/>
+					<in3 component_id="414"/>
+				</object>
+			</c>
+			<c type="10">
+				<object id="236" e="x*0.4+y*0.6">
+					<pos x="20.25" y="13.5"/>
+					<in1 component_id="752"/>
+					<in2 component_id="236"/>
+				</object>
+			</c>
+			<c type="10">
+				<object id="237" e="(x*z)*0.4+y*0.6">
+					<pos x="20.25" y="12.5"/>
+					<in1 component_id="752"/>
+					<in2 component_id="237"/>
+					<in3 component_id="55"/>
+				</object>
+			</c>
+			<c type="40">
+				<object id="265" count="16" offset="9">
+					<pos x="-1.25" y="20.5"/>
+					<inc component_id="267"/>
+					<in1 component_id="268"/>
+					<in2 component_id="74"/>
+					<in3 component_id="461"/>
+					<in4 component_id="752"/>
+					<in5 component_id="72"/>
+					<in6 component_id="484"/>
+					<in7 component_id="313"/>
+					<in8 component_id="421"/>
+					<in9 component_id="422"/>
+					<in10 component_id="423"/>
+					<in11 component_id="661"/>
+					<in12 component_id="688"/>
+					<in13 component_id="592"/>
+					<in14 component_id="659"/>
+					<in15 component_id="313"/>
+					<in16 component_id="12"/>
+				</object>
+			</c>
+			<c type="56">
+				<object id="266" script='m=math
+pi=m.pi
+si=m.sin
+co=m.cos
+fl=m.floor
+gn=input.getNumber
+gb=input.getBool
+sf=string.format
+
+function IPIR(X,Y,W,H)
+return tx&gt;X and ty&gt;Y and tx&lt;X+W and ty&lt;Y+H
+end
+function tog(x,z)
+if x and not y then
+z=not z
+end
+y=x
+return z
+end
+
+rt=0
+rps_T=property.getBool("Default Engine Speed Unit")
+
+function onTick()
+tx,ty=gn(3),gn(4)
+temp,rps,AF,LOAD,D_rps,M_rps,bat,lit,cap,ls,gen,d_t,bs=gn(10),gn(11),gn(12),gn(13)*100,gn(15),gn(16),gn(17),gn(18),gn(19),gn(20),gn(21),gn(22),gn(23)
+fp=lit/cap
+
+th=gb(1)
+ck=th2 and not th
+d_rps=gb(12) and D_rps or 0
+m_rps=gb(13) and M_rps or 60
+
+rps_T=tog(IPIR(8,8,16,5)and ck,rps_T)
+fuel_m=tog(IPIR(fuel_m and 3 or 21,35,12,20)and ck,fuel_m)and not batt_m
+batt_m=tog(IPIR(3,35,12,20)and ck,batt_m)and not fuel_m
+
+if gb(10) then cc="standby"elseif gb(9) then cc="engine off"elseif gb(6) then cc="HIGH TEMP"elseif rps&lt;2.5 then cc="LOW RPS"elseif bat&lt;0.6 then cc="low batt"elseif fp&lt;=0.1 then cc="low fuel"else cc="ALL GOOD"end
+
+rt=rps&gt;2 and rt+1/60 or rt
+rh=fl(rt/3600)
+rm=fl(rt/60)-rh*60
+rs=rt-rm*60
+th2=gb(1)
+end
+
+pt=property.getText
+bgr=pt("Background RGB")
+tex=pt("Text")
+tit=pt("Title")
+it=pt("Instrument text")
+wb=pt("Warn bad")
+db=pt("Dial dash")
+dn=pt("Needle")
+dlt=pt("Dial limit")
+fb=pt("Fuel border")
+ff=pt("Fuel fill")
+tb=pt("Temp border")
+tf=pt("Temp fill")
+tn=tonumber
+function col(C,A)
+c={C:match("(%d+).-(%d+).-(%d+)")}
+f=A~=nil and A or 255
+r=tn(c[1])or 0
+g=tn(c[2])or 0
+b=tn(c[3])or 0
+s.setColor(r^2.2/255^2.2*r,g^2.2/255^2.2*g,b^2.2/255^2.2*b,f)
+end
+
+s=screen
+dt,dtb,dl,dr,drf,dtf=s.drawText,s.drawTextBox,s.drawLine,s.drawRect,s.drawRectF,s.drawTriangleF
+function onDraw()
+col(bgr)drf(0,0,96,96)
+col(tit)drf(33,0,53,7)dtf(84,7,99,0,84,0)
+col(bgr)dt(35,1,"Sharps ECU")
+col(bgr,100)dl(33,7,33,31)dl(0,31,96,31)
+col((cc=="ALL GOOD"or cc=="standby"or cc=="engine off") and tit or wb)dt(35,9,cc)
+col(tex)dt(35,17,sf("A/F:%.1f",AF))dt(35,25,sf("load:%.0f",LOAD).."%")
+t_t=tog(IPIR(82,25,25,8)and ck,t_t)
+temp_bar(95,27,temp,t_t and sf("%.0f^",d_t) or sf("%.0fC",temp))
+dial(16,16,rps_T and sf("%.0f",rps*60)or sf("%.1f",rps),rps_T and"RPM"or"RPS",rps,d_rps,m_rps)
+
+if not fuel_m then
+batt(2,55,bat)
+end
+
+if batt_m then
+col(tit)
+dt(22,33,"battery info")
+col(tex)
+dt(22,41,sf("%.0f ",bs).."% / min")
+dt(22,49,sf("%.0f swatts",gen))
+dt(22,57,sf("%.0f s // l/s",m.abs(gen/ls)))
+end
+
+if not batt_m then
+fx=fuel_m and 22 or 39
+sm=tog(IPIR(fx,41,64,5)and ck,sm)
+col(tex)
+dt(fx,41,sm and sf("%.2f",ls).."L/S" or sf("%.0f",ls*60).."L/MIN")
+
+if fuel_m then
+col(tit)
+dt(22,33,"fuel info")
+col(tex)
+dt(22,49,sf("%.0f L",lit))
+t_f=m.abs(lit/ls)
+f_hr=fl(t_f/3600)
+f_min=fl(t_f/60)-f_hr*60
+f_e=" empty"
+
+if m.abs(ls)&gt;0.05 then
+dt(22,57,t_f&gt;3600 and sf("%.0f h %.0f m",f_hr,f_min)..f_e or sf("%.0f m",f_min)..f_e)
+end
+fuel(2,55,fp)
+end
+end
+
+if not fuel_m and not batt_m then
+col(tit)
+dt(39,33,"consumption")
+dt(39,49,"run time")
+col(tex)
+dt(39,57,rh&gt;0 and sf("%.0f hr %.0f m",rh,rm)or sf("%.0f min %.0f s",rm,rs))fuel(21,55,fp)col(bgr,100)dl(37,32,37,64)
+else
+col(bgr,100)
+dl(20,32,20,64)
+end
+end
+
+function batt(a,b,c)col(ff,100)drf(a,b,12,-20*c)col(fb)dr(a,b,12,-20)drf(a+3,b-20,7,-2)col(it)dt(a-2,b+2,sf("%.0f",c*100).."%")
+	end
+function fuel(a,b,c)col(ff,100)drf(a,b,12,-20*c)col(fb)dr(a,b,12,-20)drf(a+3,b-15,7,-3)dr(a+12,b-15,2,15)col(it)dt(a,b+2,sf("%.0f",c*100).."%")
+	end
+function dial(a,b,c,d,e,f,g)
+NA=pi*7/4+e*pi*1.5/g
+SNA=pi*7/4+f*pi*1.5/g
+col(it)dtb(a-16,b-1,32,5,c,0,0)dtb(a-8,b-7,16,5,d,0,0)for h=0,-pi/4,-1/23 do
+col(dlt)dl(a+14*co(h),b-14*si(h),a+16*co(h),b-16*si(h))end
+col(db)for h=pi*5/4,-pi/3,-pi/4 do dl(a+13*co(h),b-13*si(h),a+16*co(h),b-16*si(h))end
+for h=pi*5/4,-pi/3,-pi/12 do dl(a+15*co(h),b-15*si(h),a+16*co(h),b-16*si(h))end
+col(dn)dl(a-9*co(NA),b-9*si(NA),a-16*co(NA),b-16*si(NA))col(dn,100)dl(a-12*co(SNA),b-12*si(SNA),a-16*co(SNA),b-16*si(SNA))
+end
+function temp_bar(a,b,c,d)col(tb)for i=2,4 do dl(a-9,b-4*i,a-8,b-4*i)dl(a-3,b-4*i,a-2,b-4*i)end;dl(a-9,b-20,a-2,b-20)dl(a-9,b-4,a-2,b-4)drf(a-13,b-3,3,-2)dl(a-12,b-5,a-12,b-11)dl(a-11,b-9,a-10,b-9)dl(a-11,b-7,a-10,b-7)col(tf)drf(a-8,b-4,5,-(c/120)*16)col(it)dtb(a-21,b-2,21,8,d,1)end'>
+					<pos y="24.25"/>
+					<in1 component_id="265"/>
+				</object>
+			</c>
+			<c type="41">
+				<object id="267" count="9" offset="4">
+					<pos x="-2.5" y="22.25"/>
+					<inc component_id="283"/>
+					<in1/>
+					<in2 component_id="190"/>
+					<in3 component_id="322"/>
+					<in4/>
+					<in5 component_id="525"/>
+					<in6/>
+					<in7 component_id="114"/>
+					<in8 component_id="735"/>
+					<in9 component_id="734"/>
+				</object>
+			</c>
+			<c type="11">
+				<object id="268">
+					<pos x="-2.5" y="25"/>
+					<in1 component_id="106"/>
+					<min text="0"/>
+					<max text="140" value="140"/>
+				</object>
+			</c>
+			<c type="26">
+				<object id="322" ct="0">
+					<pos x="-6.75" y="5"/>
+					<in1 component_id="724"/>
+				</object>
+			</c>
+			<c type="35">
+				<object id="397">
+					<pos x="-5" y="19.75"/>
+					<in1 component_id="422"/>
+				</object>
+			</c>
+			<c type="45">
+				<object id="398" e="round(60*x,0.01)">
+					<pos x="-3.75" y="19.75"/>
+					<in1 component_id="397"/>
+				</object>
+			</c>
+			<c type="45">
+				<object id="421" e="max(x,0)">
+					<pos x="-2.5" y="21.75"/>
+					<in1 component_id="392"/>
+				</object>
+			</c>
+			<c type="45">
+				<object id="422" e="max(x,0)">
+					<pos x="-2.5" y="21.25"/>
+					<in1 component_id="394"/>
+				</object>
+			</c>
+			<c type="45">
+				<object id="423" e="max(x,1)">
+					<pos x="-2.5" y="20.75"/>
+					<in1 component_id="396"/>
+				</object>
+			</c>
+			<c type="10">
+				<object id="461" e="x*0.1+y*0.9">
+					<pos x="17.5" y="12.75"/>
+					<in1 component_id="14"/>
+					<in2 component_id="461"/>
+				</object>
+			</c>
+			<c type="36">
+				<object id="484" e="lerp(lerp(z*b,min(y*c,60),min(abs(x*a),1)),z*b,clamp((w-100)/10,0,1))">
+					<pos x="-3" y="10.5"/>
+					<in1 component_id="676"/>
+					<in2 component_id="313"/>
+					<in3 component_id="72"/>
+					<in4 component_id="490"/>
+					<in5 component_id="743"/>
+					<in6 component_id="744"/>
+					<in7 component_id="745"/>
+				</object>
+			</c>
+			<c type="22">
+				<object id="490">
+					<pos x="-4.5" y="10.5"/>
+					<in1 component_id="106"/>
+					<in3 component_id="639"/>
+				</object>
+			</c>
+			<c type="10">
+				<object id="497" e="x*0.03+y*0.97">
+					<pos x="-2.5" y="19.25"/>
+					<in1 component_id="398"/>
+					<in2 component_id="497"/>
+				</object>
+			</c>
+			<c>
+				<object id="525">
+					<pos x="-3.75" y="23"/>
+					<in1 component_id="235"/>
+				</object>
+			</c>
+			<c type="35">
+				<object id="590">
+					<pos x="-5" y="18.75"/>
+					<in1 component_id="106"/>
+				</object>
+			</c>
+			<c type="45">
+				<object id="591" e="round(3600*x,0.01)">
+					<pos x="-3.75" y="18.75"/>
+					<in1 component_id="590"/>
+				</object>
+			</c>
+			<c type="10">
+				<object id="592" e="x*0.03+y*0.97">
+					<pos x="-2.5" y="18.25"/>
+					<in1 component_id="591"/>
+					<in2 component_id="592"/>
+				</object>
+			</c>
+			<c type="22">
+				<object id="613">
+					<pos x="-6.75" y="2.25"/>
+					<in1 component_id="683"/>
+					<in3 component_id="724"/>
+				</object>
+			</c>
+			<c type="10">
+				<object id="634" e="(x*clamp((y-2.5)*2,0,1))*0.1+z*0.9">
+					<pos x="4.75" y="13"/>
+					<in1 component_id="678"/>
+					<in2 component_id="74"/>
+					<in3 component_id="634"/>
+				</object>
+			</c>
+			<c type="15">
+				<object id="636">
+					<pos x="-16" y="5.75"/>
+					<n text="70" value="70"/>
+				</object>
+			</c>
+			<c type="15">
+				<object id="637">
+					<pos x="-16" y="6.5"/>
+					<n text="95" value="95"/>
+				</object>
+			</c>
+			<c type="15">
+				<object id="638">
+					<pos x="-16" y="7.5"/>
+					<n text="110" value="110"/>
+				</object>
+			</c>
+			<c type="46">
+				<object id="651" e="y&amp;z&amp;!w">
+					<pos x="4.5" y="7"/>
+					<in2 component_id="235"/>
+					<in3 component_id="805"/>
+					<in4 component_id="803"/>
+				</object>
+			</c>
+			<c type="35">
+				<object id="657">
+					<pos x="-5" y="17.75"/>
+					<in1 component_id="392"/>
+				</object>
+			</c>
+			<c type="45">
+				<object id="658" e="round(3600*x,0.01)">
+					<pos x="-3.75" y="17.75"/>
+					<in1 component_id="657"/>
+				</object>
+			</c>
+			<c type="10">
+				<object id="659" e="x*0.03+y*0.97">
+					<pos x="-2.5" y="17.25"/>
+					<in1 component_id="658"/>
+					<in2 component_id="659"/>
+				</object>
+			</c>
+			<c type="10">
+				<object id="661" e="x*y*60">
+					<pos x="-2.5" y="16.25"/>
+					<in1 component_id="12"/>
+					<in2 component_id="689"/>
+				</object>
+			</c>
+			<c type="10">
+				<object id="678" e="clamp((sqrt((x-y)/7)),0,z/100)">
+					<pos x="3.25" y="13"/>
+					<in1 component_id="74"/>
+					<in2 component_id="679"/>
+					<in3 component_id="680"/>
+				</object>
+			</c>
+			<c type="15">
+				<object id="683">
+					<pos x="-8" y="2.75"/>
+					<n text="1" value="1"/>
+				</object>
+			</c>
+			<c type="45">
+				<object id="685" e="lerp(0.0005,0.005,x/100)">
+					<pos x="17.5" y="11.25"/>
+					<in1 component_id="684"/>
+				</object>
+			</c>
+			<c type="39">
+				<object id="690">
+					<pos x="9" y="6"/>
+					<in2 component_id="89"/>
+					<in3 component_id="691"/>
+					<in6 component_id="235"/>
+				</object>
+			</c>
+			<c type="45">
+				<object id="691" e="lerp(0.0001,0.5,x/100)">
+					<pos x="7.5" y="6.75"/>
+					<in1 component_id="434"/>
+				</object>
+			</c>
+			<c type="39">
+				<object id="692">
+					<pos x="9" y="7.75"/>
+					<in2 component_id="706"/>
+					<in4 component_id="693"/>
+					<in6 component_id="819"/>
+				</object>
+			</c>
+			<c type="45">
+				<object id="693" e="lerp(0.0005,0.005,x/100)">
+					<pos x="7.5" y="8.25"/>
+					<in1 component_id="434"/>
+				</object>
+			</c>
+			<c type="26">
+				<object id="703" ct="0" dt="5.5">
+					<pos x="6" y="7.75"/>
+					<in1 component_id="651"/>
+				</object>
+			</c>
+			<c type="22">
+				<object id="706">
+					<pos x="6" y="9"/>
+					<in2 component_id="89"/>
+					<in3 component_id="713"/>
+				</object>
+			</c>
+			<c type="46">
+				<object id="713" e="x&amp;y">
+					<pos x="4.5" y="8.25"/>
+					<in1 component_id="801"/>
+					<in2 component_id="799"/>
+				</object>
+			</c>
+			<c type="56">
+				<object id="717" script="gn=input.getNumber
+gb=input.getBool
+sb=output.setBool
+sn=output.setNumber
+
+function onTick()
+-------------------------------------------------------------list of on/off composite channels that is outputted
+sb(1,not gb(9))--engine running
+sb(2,gb(7))--starter on
+sb(3,gb(6))--high temp
+sb(4,gb(11))--critical temp triggered
+sb(5,gb(12))--RPS based throttle
+sb(6,gb(13))-- Max rps limit on
+
+
+-------------------------------------------------------------list of number composite channels that is outputted
+sn(1,gn(11))--actual rps
+sn(2,gn(15))--desired rps
+sn(3,gn(10))--temp
+sn(4,gn(13))--load 0-100%
+sn(5,(2^round((8/1)*gn(13),1))-1)--load for radial segment set to bits
+sn(6,gn(12))--AFR
+sn(7,gn(20))--fuel consumption
+sn(8,gn(18))--current fuel level
+sn(9,gn(17))--battery
+sn(10,(2^round((8/1)*gn(17),1))-1)--battery
+sn(11,gn(21))-- Gen Swatts
+sn(12,gn(21)/gn(20))-- Swatts // Litres/second
+sn(13,gn(11)*60)--actual rpm
+sn(14,gn(15)*60)--desired rpm
+sn(15,(gn(18)/gn(19))*100) -- fuel 0-100 %
+sn(16,gn(22)) -- delta temp change per min
+
+------------------------------------------------------------ screen controller specific
+sn(17,gn(24))--max rps
+sn(18,gn(25))--raw fuel cylinder
+end
+
+------------------------------------------------------------ Ignore Below
+
+
+function round(x,y)
+  return y*math.floor((x+y/2)/y)
+end
+">
+					<pos y="25"/>
+					<in1 component_id="265"/>
+				</object>
+			</c>
+			<c type="10">
+				<object id="723" e="clamp((x+clamp(z,0,1)),-.1,1)*.4+y*.6">
+					<pos x="10.5" y="7.25"/>
+					<in1 component_id="690"/>
+					<in2 component_id="723"/>
+					<in3 component_id="692"/>
+				</object>
+			</c>
+			<c type="46">
+				<object id="724" e="(x&amp;y)|(!x&amp;z&amp;w)">
+					<pos x="-8" y="1.5"/>
+					<in1 component_id="235"/>
+					<in2 component_id="119"/>
+					<in3 component_id="114"/>
+					<in4 component_id="725"/>
+				</object>
+			</c>
+			<c type="46">
+				<object id="120" e="(x&amp;y)">
+					<pos x="-8" y="3.25"/>
+					<in1 component_id="235"/>
+					<in2 component_id="119"/>
+				</object>
+			</c>
+			<c type="20">
+				<object id="728" name="Throttle Mode">
+					<pos x="-8.25" y="14"/>
+					<items>
+						<i l="Set rps throttle 0 to 1">
+							<v text="111" value="111"/>
+						</i>
+						<i l="Idle and direct and no limit">
+							<v text="100" value="100"/>
+						</i>
+						<i l="Idle and direct and limit">
+							<v text="101" value="101"/>
+						</i>
+						<i l="No idle and no limit">
+							<v text="000"/>
+						</i>
+						<i l="No idle and limit">
+							<v text="001" value="1"/>
+						</i>
+					</items>
+				</object>
+			</c>
+			<c type="45">
+				<object id="731" e="x%10">
+					<pos x="-7" y="14.5"/>
+					<in1 component_id="728"/>
+				</object>
+			</c>
+			<c type="45">
+				<object id="732" e="x%100">
+					<pos x="-7" y="14"/>
+					<in1 component_id="728"/>
+				</object>
+			</c>
+			<c type="45">
+				<object id="733" e="x">
+					<pos x="-7" y="13.5"/>
+					<in1 component_id="728"/>
+				</object>
+			</c>
+			<c type="12">
+				<object id="734">
+					<pos x="-5.75" y="14.5"/>
+					<in1 component_id="731"/>
+					<min text="1" value="1"/>
+					<max text="10" value="10"/>
+				</object>
+			</c>
+			<c type="12">
+				<object id="735">
+					<pos x="-5.75" y="14"/>
+					<in1 component_id="732"/>
+					<min text="10" value="10"/>
+					<max text="12" value="12"/>
+				</object>
+			</c>
+			<c type="12">
+				<object id="736">
+					<pos x="-5.75" y="13.5"/>
+					<in1 component_id="733"/>
+					<min text="100" value="100"/>
+					<max text="112" value="112"/>
+				</object>
+			</c>
+			<c type="44">
+				<object id="737" l="Max rps limit" on="on" off="off" m="1">
+					<pos x="-4.5" y="14.5"/>
+				</object>
+			</c>
+			<c type="44">
+				<object id="738" l="RPS based" on="on" off="off" m="1">
+					<pos x="-4.5" y="14"/>
+				</object>
+			</c>
+			<c type="44">
+				<object id="739" l="IDLE" on="on" off="off" m="1">
+					<pos x="-4.5" y="13.5"/>
+				</object>
+			</c>
+			<c type="22">
+				<object id="743">
+					<pos x="-4.5" y="9.5"/>
+					<in1 component_id="746"/>
+					<in2 component_id="749"/>
+					<in3 component_id="735"/>
+				</object>
+			</c>
+			<c type="22">
+				<object id="744">
+					<pos x="-4.5" y="8.5"/>
+					<in1 component_id="747"/>
+					<in2 component_id="750"/>
+					<in3 component_id="736"/>
+				</object>
+			</c>
+			<c type="22">
+				<object id="745">
+					<pos x="-4.5" y="7.5"/>
+					<in1 component_id="748"/>
+					<in2 component_id="751"/>
+					<in3 component_id="734"/>
+				</object>
+			</c>
+			<c type="15">
+				<object id="746">
+					<pos x="-5.75" y="10"/>
+					<n text="1" value="1"/>
+				</object>
+			</c>
+			<c type="15">
+				<object id="747">
+					<pos x="-5.75" y="9"/>
+					<n text="1" value="1"/>
+				</object>
+			</c>
+			<c type="15">
+				<object id="748">
+					<pos x="-5.75" y="8"/>
+					<n text="1" value="1"/>
+				</object>
+			</c>
+			<c type="15">
+				<object id="749">
+					<pos x="-5.75" y="9.75"/>
+					<n text="0"/>
+				</object>
+			</c>
+			<c type="15">
+				<object id="750">
+					<pos x="-5.75" y="8.75"/>
+					<n text="0"/>
+				</object>
+			</c>
+			<c type="15">
+				<object id="751">
+					<pos x="-5.75" y="7.75"/>
+					<n text="60" value="60"/>
+				</object>
+			</c>
+			<c type="36">
+				<object id="752" e="lerp(0,max(b,c*-0.1),clamp(y+1-z,a,1))+lerp(lerp(0,min(abs(x)*(1-c),1),clamp((y-z)*5,a,1)),0,clamp((w-100)/10,0,1))">
+					<pos x="13.25" y="9.25"/>
+					<in1 component_id="676"/>
+					<in2 component_id="806"/>
+					<in3 component_id="74"/>
+					<in4 component_id="490"/>
+					<in5 component_id="753"/>
+					<in6 component_id="723"/>
+					<in7 component_id="743"/>
+				</object>
+			</c>
+			<c type="22">
+				<object id="753">
+					<pos x="12" y="9.25"/>
+					<in1 component_id="754"/>
+					<in2 component_id="755"/>
+					<in3 component_id="734"/>
+				</object>
+			</c>
+			<c type="15">
+				<object id="754">
+					<pos x="10.75" y="10"/>
+					<n text="0"/>
+				</object>
+			</c>
+			<c type="15">
+				<object id="755">
+					<pos x="10.75" y="9.5"/>
+					<n text="1" value="1"/>
+				</object>
+			</c>
+			<c type="19">
+				<object id="72" name="Idle RPS">
+					<pos x="-4.5" y="11.5"/>
+					<min text="3" value="3"/>
+					<max text="20" value="20"/>
+					<int text="0.2" value="0.2"/>
+					<v text="3" value="3"/>
+				</object>
+			</c>
+			<c type="19">
+				<object id="313" name="Max RPS ">
+					<pos x="-4.5" y="12"/>
+					<min text="3.2" value="3.2"/>
+					<max text="60" value="60"/>
+					<int text="0.5" value="0.5"/>
+					<v text="20" value="20"/>
+				</object>
+			</c>
+			<c type="19">
+				<object id="434" name="RPS Pid adjustments, Reduce if over shooting">
+					<pos x="6" y="8.25"/>
+					<min text="0"/>
+					<max text="100" value="100"/>
+					<int text="1" value="1"/>
+					<v text="100" value="100"/>
+				</object>
+			</c>
+			<c type="19">
+				<object id="194" name="Low engine load AFR">
+					<pos x="16" y="12.25"/>
+					<min text="13" value="13"/>
+					<max text="15" value="15"/>
+					<int text="0.1" value="0.1"/>
+					<v text="15" value="15"/>
+				</object>
+			</c>
+			<c type="19">
+				<object id="195" name="High engine load AFR">
+					<pos x="16" y="11.75"/>
+					<min text="12" value="12"/>
+					<max text="14" value="14"/>
+					<int text="0.1" value="0.1"/>
+					<v text="12.9" value="12.900001"/>
+				</object>
+			</c>
+			<c type="19">
+				<object id="684" name="Aggresiveness to maintain Desired AFR">
+					<pos x="16" y="11.25"/>
+					<min text="1" value="1"/>
+					<max text="100" value="100"/>
+					<int text="1" value="1"/>
+					<v text="50" value="50"/>
+				</object>
+			</c>
+			<c type="33">
+				<object id="639" n="Throttle back to main temps below 106C" v="true">
+					<pos x="-5.75" y="10.5"/>
+				</object>
+			</c>
+			<c type="33">
+				<object id="640" n="Engine shutoff at 110C" v="true">
+					<pos x="-13.5" y="8"/>
+				</object>
+			</c>
+			<c type="33">
+				<object id="725" n="Motor starter cool engine if shutoff" on="yes" off="no" v="true">
+					<pos x="-9.25" y="1.5"/>
+				</object>
+			</c>
+			<c type="19">
+				<object id="109" name="Temp for Fans to turn on">
+					<pos x="-16" y="5"/>
+					<min text="20" value="20"/>
+					<max text="80" value="80"/>
+					<int text="1" value="1"/>
+					<v text="60" value="60"/>
+				</object>
+			</c>
+			<c type="34">
+				<object id="689" n="Number of cylinders for L/S calculation">
+					<pos x="-3.75" y="16.5"/>
+					<v text="8" value="8"/>
+				</object>
+			</c>
+			<c type="19">
+				<object id="679" name="Min RPS for Clutch">
+					<pos x="1.75" y="13.25"/>
+					<min text="2.5" value="2.5"/>
+					<max text="10" value="10"/>
+					<int text="0.1" value="0.1"/>
+					<v text="3" value="3"/>
+				</object>
+			</c>
+			<c type="19">
+				<object id="680" name="clutch max output (0-100%)">
+					<pos x="1.75" y="12.75"/>
+					<min text="60" value="60"/>
+					<max text="100" value="100"/>
+					<int text="0.5" value="0.5"/>
+					<v text="100" value="100"/>
+				</object>
+			</c>
+			<c type="58">
+				<object id="686" n="Display Settings" v="----------------------------">
+					<pos y="23.75"/>
+				</object>
+			</c>
+			<c type="15">
+				<object id="798">
+					<pos x="1.75" y="8.75"/>
+					<n text="1" value="1"/>
+				</object>
+			</c>
+			<c type="17">
+				<object id="799">
+					<pos x="3" y="8"/>
+					<in1 component_id="690"/>
+					<in2 component_id="800"/>
+				</object>
+			</c>
+			<c type="15">
+				<object id="800">
+					<pos x="1.75" y="8"/>
+					<n text="0"/>
+				</object>
+			</c>
+			<c type="17">
+				<object id="801">
+					<pos x="3" y="8.75"/>
+					<in1 component_id="692"/>
+					<in2 component_id="798"/>
+				</object>
+			</c>
+			<c type="15">
+				<object id="802">
+					<pos x="1.75" y="6.25"/>
+					<n text="-0.05" value="-0.05"/>
+				</object>
+			</c>
+			<c type="18">
+				<object id="803">
+					<pos x="3" y="6.25"/>
+					<in1 component_id="692"/>
+					<in2 component_id="802"/>
+				</object>
+			</c>
+			<c type="15">
+				<object id="804">
+					<pos x="1.75" y="7"/>
+					<n text="0.5" value="0.5"/>
+				</object>
+			</c>
+			<c type="18">
+				<object id="805">
+					<pos x="3" y="7"/>
+					<in1 component_id="89"/>
+					<in2 component_id="804"/>
+				</object>
+			</c>
+			<c type="22">
+				<object id="806">
+					<pos x="12" y="10.25"/>
+					<in1 component_id="809"/>
+					<in2 component_id="313"/>
+					<in3 component_id="735"/>
+				</object>
+			</c>
+			<c type="10">
+				<object id="809" e="x+lerp(3,0,y/100)">
+					<pos x="10.75" y="10.5"/>
+					<in1 component_id="484"/>
+					<in2 component_id="434"/>
+				</object>
+			</c>
+			<c type="44">
+				<object id="813" l="Version number" on="4F" m="1">
+					<pos y="26.25"/>
+				</object>
+			</c>
+			<c type="44">
+				<object id="814" l="Version Date" on="30/05" off="25" m="1">
+					<pos x="1.25" y="26.25"/>
+				</object>
+			</c>
+			<c type="33">
+				<object id="815" n="Default Engine Speed Unit" on="RPM" off="RPS" v="true">
+					<pos y="23.25"/>
+				</object>
+			</c>
+			<c type="58">
+				<object id="584" n="Background RGB" v="95,95,95">
+					<pos y="22.75"/>
+				</object>
+			</c>
+			<c type="58">
+				<object id="585" n="Text" v="233,233,227">
+					<pos y="22.25"/>
+				</object>
+			</c>
+			<c type="58">
+				<object id="597" n="Title" v="117, 171, 58">
+					<pos y="21.75"/>
+				</object>
+			</c>
+			<c type="58">
+				<object id="598" n="Instrument text" v="160,99,90">
+					<pos y="21.25"/>
+				</object>
+			</c>
+			<c type="58">
+				<object id="595" n="Warn bad" v="255,0,0">
+					<pos y="20.75"/>
+				</object>
+			</c>
+			<c type="58">
+				<object id="588" n="Dial limit" v="254, 41, 7">
+					<pos x="1.25" y="22.75"/>
+				</object>
+			</c>
+			<c type="58">
+				<object id="586" n="Needle" v="238, 244, 246">
+					<pos x="1.25" y="22.25"/>
+				</object>
+			</c>
+			<c type="58">
+				<object id="599" n="Dial dash" v="248,148,48">
+					<pos x="1.25" y="21.75"/>
+				</object>
+			</c>
+			<c type="58">
+				<object id="587" n="Fuel border" v="248,148,48">
+					<pos x="2.5" y="22.75"/>
+				</object>
+			</c>
+			<c type="58">
+				<object id="589" n="Fuel fill" v="248,158,98">
+					<pos x="2.5" y="22.25"/>
+				</object>
+			</c>
+			<c type="58">
+				<object id="600" n="Temp border" v="248,148,48">
+					<pos x="3.75" y="22.75"/>
+				</object>
+			</c>
+			<c type="58">
+				<object id="601" n="Temp fill" v="160,99,90">
+					<pos x="3.75" y="22.25"/>
+				</object>
+			</c>
+			<c type="58">
+				<object id="811" n="Engine name" v="Sharp ECU">
+					<pos x="1.25" y="21.25"/>
+				</object>
+			</c>
+			<c type="44">
+				<object id="608" l="ECU Status" on="on" off="off">
+					<pos x="-11" y="8.25"/>
+					<in1 component_id="235"/>
+				</object>
+			</c>
+			<c type="43">
+				<object id="78" l="Throttle out">
+					<pos x="13.25" y="11.5"/>
+					<in1 component_id="752"/>
+				</object>
+			</c>
+			<c type="43">
+				<object id="203" l="Eng Temp">
+					<pos x="-14.75" y="8"/>
+					<in1 component_id="106"/>
+				</object>
+			</c>
+			<c type="43">
+				<object id="83" l="Engine RPS">
+					<pos x="-1.5" y="13.75"/>
+					<in1 component_id="74"/>
+				</object>
+			</c>
+			<c type="43">
+				<object id="86" l="Demand RPS">
+					<pos x="-1.5" y="13"/>
+					<in1 component_id="484"/>
+				</object>
+			</c>
+			<c type="43">
+				<object id="15" l="Air/Fuel Ratio">
+					<pos x="19" y="13"/>
+					<in1 component_id="461"/>
+				</object>
+			</c>
+			<c type="43">
+				<object id="665" l="Litres / Sec">
+					<pos x="-1.25" y="16.5"/>
+					<in1 component_id="661"/>
+				</object>
+			</c>
+			<c type="44">
+				<object id="232" l="High engine temp" m="1">
+					<pos x="-13.5" y="6"/>
+					<in1 component_id="190"/>
+				</object>
+			</c>
+			<c type="44">
+				<object id="233" l="Critical engine temp" on="Allowing engine to cool" m="1">
+					<pos x="-12.25" y="8"/>
+					<in1 component_id="114"/>
+				</object>
+			</c>
+			<c type="44">
+				<object id="816" l="Starter motor" on="on" m="1">
+					<pos x="-6.75" y="1.75"/>
+					<in1 component_id="724"/>
+				</object>
+			</c>
+			<c type="44">
+				<object id="817" l="Fans" on="on" m="1">
+					<pos x="-13.5" y="4.75"/>
+					<in1 component_id="107"/>
+				</object>
+			</c>
+			<c type="1">
+				<object id="819">
+					<pos x="7.5" y="7.5"/>
+					<in1 component_id="703"/>
+					<in2 component_id="235"/>
+				</object>
+			</c>
+		</components>
+		<components_bridge>
+			<c type="4">
+				<object id="2">
+					<pos x="13" y="13.25"/>
+				</object>
+			</c>
+			<c type="3">
+				<object id="7">
+					<pos x="21.5" y="13"/>
+					<in1 component_id="237"/>
+				</object>
+			</c>
+			<c type="3">
+				<object id="8">
+					<pos x="21.5" y="14"/>
+					<in1 component_id="236"/>
+				</object>
+			</c>
+			<c type="2">
+				<object id="74">
+					<pos x="-3" y="12.75"/>
+				</object>
+			</c>
+			<c type="3">
+				<object id="97">
+					<pos x="-8.5" y="8.75"/>
+					<in1 component_id="142"/>
+				</object>
+			</c>
+			<c type="3">
+				<object id="101">
+					<pos x="-5.5" y="2.75"/>
+					<in1 component_id="613"/>
+				</object>
+			</c>
+			<c type="1">
+				<object id="103">
+					<pos x="-13.5" y="5.25"/>
+					<in1 component_id="107"/>
+				</object>
+			</c>
+			<c type="7">
+				<object id="174">
+					<pos x="1.25" y="24.25"/>
+					<in1 component_id="266" node_index="1"/>
+				</object>
+			</c>
+			<c type="4">
+				<object id="283">
+					<pos x="-3.75" y="24.5"/>
+				</object>
+			</c>
+			<c type="1">
+				<object id="364">
+					<pos x="-11" y="7.75"/>
+					<in1 component_id="235"/>
+				</object>
+			</c>
+			<c type="3">
+				<object id="367">
+					<pos x="6.25" y="13.5"/>
+					<in1 component_id="634"/>
+				</object>
+			</c>
+			<c type="2">
+				<object id="392">
+					<pos x="-3.75" y="21.75"/>
+				</object>
+			</c>
+			<c type="2">
+				<object id="394">
+					<pos x="-3.75" y="21.25"/>
+				</object>
+			</c>
+			<c type="2">
+				<object id="396">
+					<pos x="-3.75" y="20.75"/>
+				</object>
+			</c>
+			<c>
+				<object id="414">
+					<pos x="-13.5" y="6.75"/>
+				</object>
+			</c>
+			<c type="2">
+				<object id="676">
+					<pos x="-4.5" y="12.5"/>
+				</object>
+			</c>
+			<c type="1">
+				<object id="682">
+					<pos x="-6.75" y="4"/>
+					<in1 component_id="120"/>
+				</object>
+			</c>
+			<c type="2">
+				<object id="688">
+					<pos x="-2.5" y="20.25"/>
+				</object>
+			</c>
+			<c type="5">
+				<object id="722">
+					<pos x="1.25" y="25.25"/>
+					<in1 component_id="717"/>
+				</object>
+			</c>
+		</components_bridge>
+		<groups/>
+		<component_states>
+			<c0 id="11">
+				<pos x="14.5" y="13.25"/>
+				<in1 component_id="2"/>
+			</c0>
+			<c1 id="12" i="1">
+				<pos x="14.5" y="13"/>
+				<in1 component_id="2"/>
+			</c1>
+			<c2 id="14" e="clamp((x*1000)/(clamp(y,0.0000001,1)*1000),0,25)">
+				<pos x="16" y="12.75"/>
+				<in1 component_id="11"/>
+				<in2 component_id="12"/>
+			</c2>
+			<c3 id="55" e="(clamp(z+w*(x-y),0.3,1))">
+				<pos x="19" y="10.75"/>
+				<in1 component_id="461"/>
+				<in2 component_id="193"/>
+				<in3 component_id="55"/>
+				<in4 component_id="685"/>
+			</c3>
+			<c4 id="89">
+				<pos x="-1.5" y="12.25"/>
+				<in1 component_id="74"/>
+				<in2 component_id="484"/>
+			</c4>
+			<c5 id="106" i="2">
+				<pos x="-16" y="8"/>
+				<in1 component_id="2"/>
+			</c5>
+			<c6 id="107">
+				<pos x="-14.75" y="5"/>
+				<in1 component_id="106"/>
+				<in2 component_id="109"/>
+			</c6>
+			<c7 id="110">
+				<pos x="-14.75" y="7.25"/>
+				<in1 component_id="106"/>
+				<in2 component_id="638"/>
+			</c7>
+			<c8 id="114">
+				<pos x="-13.5" y="7.25"/>
+				<in1 component_id="110"/>
+				<in2 component_id="115"/>
+			</c8>
+			<c9 id="115">
+				<pos x="-14.75" y="6.5"/>
+				<in1 component_id="106"/>
+				<in2 component_id="637"/>
+			</c9>
+			<c10 id="119">
+				<pos x="-9.5" y="3.5"/>
+				<in1 component_id="74"/>
+				<in2 component_id="126"/>
+			</c10>
+			<c11 id="122">
+				<pos x="-11" y="8.75"/>
+				<n text="1" value="1"/>
+			</c11>
+			<c12 id="126">
+				<pos x="-11" y="3.5"/>
+				<n text="2.25" value="2.25"/>
+			</c12>
+			<c13 id="142">
+				<pos x="-9.75" y="8.25"/>
+				<in1 component_id="122"/>
+				<in3 component_id="235"/>
+			</c13>
+			<c14 id="190">
+				<pos x="-14.75" y="5.75"/>
+				<in1 component_id="106"/>
+				<in2 component_id="636"/>
+			</c14>
+			<c15 id="193" e="x-clamp(x-y,0,10)*z">
+				<pos x="17.5" y="11.75"/>
+				<in1 component_id="194"/>
+				<in2 component_id="195"/>
+				<in3 component_id="752"/>
+			</c15>
+			<c16 id="209" l="Made by sharp">
+				<pos x="-45.25" y="-50.25"/>
+			</c16>
+			<c17 id="235" e="!(y&amp;x)&amp;z">
+				<pos x="-12.25" y="6.75"/>
+				<in1 component_id="640"/>
+				<in2 component_id="114"/>
+				<in3 component_id="414"/>
+			</c17>
+			<c18 id="236" e="x*0.4+y*0.6">
+				<pos x="20.25" y="13.5"/>
+				<in1 component_id="752"/>
+				<in2 component_id="236"/>
+			</c18>
+			<c19 id="237" e="(x*z)*0.4+y*0.6">
+				<pos x="20.25" y="12.5"/>
+				<in1 component_id="752"/>
+				<in2 component_id="237"/>
+				<in3 component_id="55"/>
+			</c19>
+			<c20 id="265" count="16" offset="9">
+				<pos x="-1.25" y="20.5"/>
+				<inc component_id="267"/>
+				<in1 component_id="268"/>
+				<in2 component_id="74"/>
+				<in3 component_id="461"/>
+				<in4 component_id="752"/>
+				<in5 component_id="72"/>
+				<in6 component_id="484"/>
+				<in7 component_id="313"/>
+				<in8 component_id="421"/>
+				<in9 component_id="422"/>
+				<in10 component_id="423"/>
+				<in11 component_id="661"/>
+				<in12 component_id="688"/>
+				<in13 component_id="592"/>
+				<in14 component_id="659"/>
+				<in15 component_id="313"/>
+				<in16 component_id="12"/>
+			</c20>
+			<c21 id="266" script='m=math
+pi=m.pi
+si=m.sin
+co=m.cos
+fl=m.floor
+gn=input.getNumber
+gb=input.getBool
+sf=string.format
+
+function IPIR(X,Y,W,H)
+return tx&gt;X and ty&gt;Y and tx&lt;X+W and ty&lt;Y+H
+end
+function tog(x,z)
+if x and not y then
+z=not z
+end
+y=x
+return z
+end
+
+rt=0
+rps_T=property.getBool("Default Engine Speed Unit")
+
+function onTick()
+tx,ty=gn(3),gn(4)
+temp,rps,AF,LOAD,D_rps,M_rps,bat,lit,cap,ls,gen,d_t,bs=gn(10),gn(11),gn(12),gn(13)*100,gn(15),gn(16),gn(17),gn(18),gn(19),gn(20),gn(21),gn(22),gn(23)
+fp=lit/cap
+
+th=gb(1)
+ck=th2 and not th
+d_rps=gb(12) and D_rps or 0
+m_rps=gb(13) and M_rps or 60
+
+rps_T=tog(IPIR(8,8,16,5)and ck,rps_T)
+fuel_m=tog(IPIR(fuel_m and 3 or 21,35,12,20)and ck,fuel_m)and not batt_m
+batt_m=tog(IPIR(3,35,12,20)and ck,batt_m)and not fuel_m
+
+if gb(10) then cc="standby"elseif gb(9) then cc="engine off"elseif gb(6) then cc="HIGH TEMP"elseif rps&lt;2.5 then cc="LOW RPS"elseif bat&lt;0.6 then cc="low batt"elseif fp&lt;=0.1 then cc="low fuel"else cc="ALL GOOD"end
+
+rt=rps&gt;2 and rt+1/60 or rt
+rh=fl(rt/3600)
+rm=fl(rt/60)-rh*60
+rs=rt-rm*60
+th2=gb(1)
+end
+
+pt=property.getText
+bgr=pt("Background RGB")
+tex=pt("Text")
+tit=pt("Title")
+it=pt("Instrument text")
+wb=pt("Warn bad")
+db=pt("Dial dash")
+dn=pt("Needle")
+dlt=pt("Dial limit")
+fb=pt("Fuel border")
+ff=pt("Fuel fill")
+tb=pt("Temp border")
+tf=pt("Temp fill")
+tn=tonumber
+function col(C,A)
+c={C:match("(%d+).-(%d+).-(%d+)")}
+f=A~=nil and A or 255
+r=tn(c[1])or 0
+g=tn(c[2])or 0
+b=tn(c[3])or 0
+s.setColor(r^2.2/255^2.2*r,g^2.2/255^2.2*g,b^2.2/255^2.2*b,f)
+end
+
+s=screen
+dt,dtb,dl,dr,drf,dtf=s.drawText,s.drawTextBox,s.drawLine,s.drawRect,s.drawRectF,s.drawTriangleF
+function onDraw()
+col(bgr)drf(0,0,96,96)
+col(tit)drf(33,0,53,7)dtf(84,7,99,0,84,0)
+col(bgr)dt(35,1,"Sharps ECU")
+col(bgr,100)dl(33,7,33,31)dl(0,31,96,31)
+col((cc=="ALL GOOD"or cc=="standby"or cc=="engine off") and tit or wb)dt(35,9,cc)
+col(tex)dt(35,17,sf("A/F:%.1f",AF))dt(35,25,sf("load:%.0f",LOAD).."%")
+t_t=tog(IPIR(82,25,25,8)and ck,t_t)
+temp_bar(95,27,temp,t_t and sf("%.0f^",d_t) or sf("%.0fC",temp))
+dial(16,16,rps_T and sf("%.0f",rps*60)or sf("%.1f",rps),rps_T and"RPM"or"RPS",rps,d_rps,m_rps)
+
+if not fuel_m then
+batt(2,55,bat)
+end
+
+if batt_m then
+col(tit)
+dt(22,33,"battery info")
+col(tex)
+dt(22,41,sf("%.0f ",bs).."% / min")
+dt(22,49,sf("%.0f swatts",gen))
+dt(22,57,sf("%.0f s // l/s",m.abs(gen/ls)))
+end
+
+if not batt_m then
+fx=fuel_m and 22 or 39
+sm=tog(IPIR(fx,41,64,5)and ck,sm)
+col(tex)
+dt(fx,41,sm and sf("%.2f",ls).."L/S" or sf("%.0f",ls*60).."L/MIN")
+
+if fuel_m then
+col(tit)
+dt(22,33,"fuel info")
+col(tex)
+dt(22,49,sf("%.0f L",lit))
+t_f=m.abs(lit/ls)
+f_hr=fl(t_f/3600)
+f_min=fl(t_f/60)-f_hr*60
+f_e=" empty"
+
+if m.abs(ls)&gt;0.05 then
+dt(22,57,t_f&gt;3600 and sf("%.0f h %.0f m",f_hr,f_min)..f_e or sf("%.0f m",f_min)..f_e)
+end
+fuel(2,55,fp)
+end
+end
+
+if not fuel_m and not batt_m then
+col(tit)
+dt(39,33,"consumption")
+dt(39,49,"run time")
+col(tex)
+dt(39,57,rh&gt;0 and sf("%.0f hr %.0f m",rh,rm)or sf("%.0f min %.0f s",rm,rs))fuel(21,55,fp)col(bgr,100)dl(37,32,37,64)
+else
+col(bgr,100)
+dl(20,32,20,64)
+end
+end
+
+function batt(a,b,c)col(ff,100)drf(a,b,12,-20*c)col(fb)dr(a,b,12,-20)drf(a+3,b-20,7,-2)col(it)dt(a-2,b+2,sf("%.0f",c*100).."%")
+	end
+function fuel(a,b,c)col(ff,100)drf(a,b,12,-20*c)col(fb)dr(a,b,12,-20)drf(a+3,b-15,7,-3)dr(a+12,b-15,2,15)col(it)dt(a,b+2,sf("%.0f",c*100).."%")
+	end
+function dial(a,b,c,d,e,f,g)
+NA=pi*7/4+e*pi*1.5/g
+SNA=pi*7/4+f*pi*1.5/g
+col(it)dtb(a-16,b-1,32,5,c,0,0)dtb(a-8,b-7,16,5,d,0,0)for h=0,-pi/4,-1/23 do
+col(dlt)dl(a+14*co(h),b-14*si(h),a+16*co(h),b-16*si(h))end
+col(db)for h=pi*5/4,-pi/3,-pi/4 do dl(a+13*co(h),b-13*si(h),a+16*co(h),b-16*si(h))end
+for h=pi*5/4,-pi/3,-pi/12 do dl(a+15*co(h),b-15*si(h),a+16*co(h),b-16*si(h))end
+col(dn)dl(a-9*co(NA),b-9*si(NA),a-16*co(NA),b-16*si(NA))col(dn,100)dl(a-12*co(SNA),b-12*si(SNA),a-16*co(SNA),b-16*si(SNA))
+end
+function temp_bar(a,b,c,d)col(tb)for i=2,4 do dl(a-9,b-4*i,a-8,b-4*i)dl(a-3,b-4*i,a-2,b-4*i)end;dl(a-9,b-20,a-2,b-20)dl(a-9,b-4,a-2,b-4)drf(a-13,b-3,3,-2)dl(a-12,b-5,a-12,b-11)dl(a-11,b-9,a-10,b-9)dl(a-11,b-7,a-10,b-7)col(tf)drf(a-8,b-4,5,-(c/120)*16)col(it)dtb(a-21,b-2,21,8,d,1)end'>
+				<pos y="24.25"/>
+				<in1 component_id="265"/>
+			</c21>
+			<c22 id="267" count="9" offset="4">
+				<pos x="-2.5" y="22.25"/>
+				<inc component_id="283"/>
+				<in1/>
+				<in2 component_id="190"/>
+				<in3 component_id="322"/>
+				<in4/>
+				<in5 component_id="525"/>
+				<in6/>
+				<in7 component_id="114"/>
+				<in8 component_id="735"/>
+				<in9 component_id="734"/>
+			</c22>
+			<c23 id="268">
+				<pos x="-2.5" y="25"/>
+				<in1 component_id="106"/>
+				<min text="0"/>
+				<max text="140" value="140"/>
+			</c23>
+			<c24 id="322" ct="0">
+				<pos x="-6.75" y="5"/>
+				<in1 component_id="724"/>
+			</c24>
+			<c25 id="397">
+				<pos x="-5" y="19.75"/>
+				<in1 component_id="422"/>
+			</c25>
+			<c26 id="398" e="round(60*x,0.01)">
+				<pos x="-3.75" y="19.75"/>
+				<in1 component_id="397"/>
+			</c26>
+			<c27 id="421" e="max(x,0)">
+				<pos x="-2.5" y="21.75"/>
+				<in1 component_id="392"/>
+			</c27>
+			<c28 id="422" e="max(x,0)">
+				<pos x="-2.5" y="21.25"/>
+				<in1 component_id="394"/>
+			</c28>
+			<c29 id="423" e="max(x,1)">
+				<pos x="-2.5" y="20.75"/>
+				<in1 component_id="396"/>
+			</c29>
+			<c30 id="461" e="x*0.1+y*0.9">
+				<pos x="17.5" y="12.75"/>
+				<in1 component_id="14"/>
+				<in2 component_id="461"/>
+			</c30>
+			<c31 id="484" e="lerp(lerp(z*b,min(y*c,60),min(abs(x*a),1)),z*b,clamp((w-100)/10,0,1))">
+				<pos x="-3" y="10.5"/>
+				<in1 component_id="676"/>
+				<in2 component_id="313"/>
+				<in3 component_id="72"/>
+				<in4 component_id="490"/>
+				<in5 component_id="743"/>
+				<in6 component_id="744"/>
+				<in7 component_id="745"/>
+			</c31>
+			<c32 id="490">
+				<pos x="-4.5" y="10.5"/>
+				<in1 component_id="106"/>
+				<in3 component_id="639"/>
+			</c32>
+			<c33 id="497" e="x*0.03+y*0.97">
+				<pos x="-2.5" y="19.25"/>
+				<in1 component_id="398"/>
+				<in2 component_id="497"/>
+			</c33>
+			<c34 id="525">
+				<pos x="-3.75" y="23"/>
+				<in1 component_id="235"/>
+			</c34>
+			<c35 id="590">
+				<pos x="-5" y="18.75"/>
+				<in1 component_id="106"/>
+			</c35>
+			<c36 id="591" e="round(3600*x,0.01)">
+				<pos x="-3.75" y="18.75"/>
+				<in1 component_id="590"/>
+			</c36>
+			<c37 id="592" e="x*0.03+y*0.97">
+				<pos x="-2.5" y="18.25"/>
+				<in1 component_id="591"/>
+				<in2 component_id="592"/>
+			</c37>
+			<c38 id="613">
+				<pos x="-6.75" y="2.25"/>
+				<in1 component_id="683"/>
+				<in3 component_id="724"/>
+			</c38>
+			<c39 id="634" e="(x*clamp((y-2.5)*2,0,1))*0.1+z*0.9">
+				<pos x="4.75" y="13"/>
+				<in1 component_id="678"/>
+				<in2 component_id="74"/>
+				<in3 component_id="634"/>
+			</c39>
+			<c40 id="636">
+				<pos x="-16" y="5.75"/>
+				<n text="70" value="70"/>
+			</c40>
+			<c41 id="637">
+				<pos x="-16" y="6.5"/>
+				<n text="95" value="95"/>
+			</c41>
+			<c42 id="638">
+				<pos x="-16" y="7.5"/>
+				<n text="110" value="110"/>
+			</c42>
+			<c43 id="651" e="y&amp;z&amp;!w">
+				<pos x="4.5" y="7"/>
+				<in2 component_id="235"/>
+				<in3 component_id="805"/>
+				<in4 component_id="803"/>
+			</c43>
+			<c44 id="657">
+				<pos x="-5" y="17.75"/>
+				<in1 component_id="392"/>
+			</c44>
+			<c45 id="658" e="round(3600*x,0.01)">
+				<pos x="-3.75" y="17.75"/>
+				<in1 component_id="657"/>
+			</c45>
+			<c46 id="659" e="x*0.03+y*0.97">
+				<pos x="-2.5" y="17.25"/>
+				<in1 component_id="658"/>
+				<in2 component_id="659"/>
+			</c46>
+			<c47 id="661" e="x*y*60">
+				<pos x="-2.5" y="16.25"/>
+				<in1 component_id="12"/>
+				<in2 component_id="689"/>
+			</c47>
+			<c48 id="678" e="clamp((sqrt((x-y)/7)),0,z/100)">
+				<pos x="3.25" y="13"/>
+				<in1 component_id="74"/>
+				<in2 component_id="679"/>
+				<in3 component_id="680"/>
+			</c48>
+			<c49 id="683">
+				<pos x="-8" y="2.75"/>
+				<n text="1" value="1"/>
+			</c49>
+			<c50 id="685" e="lerp(0.0005,0.005,x/100)">
+				<pos x="17.5" y="11.25"/>
+				<in1 component_id="684"/>
+			</c50>
+			<c51 id="690">
+				<pos x="9" y="6"/>
+				<in2 component_id="89"/>
+				<in3 component_id="691"/>
+				<in6 component_id="235"/>
+			</c51>
+			<c52 id="691" e="lerp(0.0001,0.5,x/100)">
+				<pos x="7.5" y="6.75"/>
+				<in1 component_id="434"/>
+			</c52>
+			<c53 id="692">
+				<pos x="9" y="7.75"/>
+				<in2 component_id="706"/>
+				<in4 component_id="693"/>
+				<in6 component_id="819"/>
+			</c53>
+			<c54 id="693" e="lerp(0.0005,0.005,x/100)">
+				<pos x="7.5" y="8.25"/>
+				<in1 component_id="434"/>
+			</c54>
+			<c55 id="703" ct="0" dt="5.5">
+				<pos x="6" y="7.75"/>
+				<in1 component_id="651"/>
+			</c55>
+			<c56 id="706">
+				<pos x="6" y="9"/>
+				<in2 component_id="89"/>
+				<in3 component_id="713"/>
+			</c56>
+			<c57 id="713" e="x&amp;y">
+				<pos x="4.5" y="8.25"/>
+				<in1 component_id="801"/>
+				<in2 component_id="799"/>
+			</c57>
+			<c58 id="717" script="gn=input.getNumber
+gb=input.getBool
+sb=output.setBool
+sn=output.setNumber
+
+function onTick()
+-------------------------------------------------------------list of on/off composite channels that is outputted
+sb(1,not gb(9))--engine running
+sb(2,gb(7))--starter on
+sb(3,gb(6))--high temp
+sb(4,gb(11))--critical temp triggered
+sb(5,gb(12))--RPS based throttle
+sb(6,gb(13))-- Max rps limit on
+
+
+-------------------------------------------------------------list of number composite channels that is outputted
+sn(1,gn(11))--actual rps
+sn(2,gn(15))--desired rps
+sn(3,gn(10))--temp
+sn(4,gn(13))--load 0-100%
+sn(5,(2^round((8/1)*gn(13),1))-1)--load for radial segment set to bits
+sn(6,gn(12))--AFR
+sn(7,gn(20))--fuel consumption
+sn(8,gn(18))--current fuel level
+sn(9,gn(17))--battery
+sn(10,(2^round((8/1)*gn(17),1))-1)--battery
+sn(11,gn(21))-- Gen Swatts
+sn(12,gn(21)/gn(20))-- Swatts // Litres/second
+sn(13,gn(11)*60)--actual rpm
+sn(14,gn(15)*60)--desired rpm
+sn(15,(gn(18)/gn(19))*100) -- fuel 0-100 %
+sn(16,gn(22)) -- delta temp change per min
+
+------------------------------------------------------------ screen controller specific
+sn(17,gn(24))--max rps
+sn(18,gn(25))--raw fuel cylinder
+end
+
+------------------------------------------------------------ Ignore Below
+
+
+function round(x,y)
+  return y*math.floor((x+y/2)/y)
+end
+">
+				<pos y="25"/>
+				<in1 component_id="265"/>
+			</c58>
+			<c59 id="723" e="clamp((x+clamp(z,0,1)),-.1,1)*.4+y*.6">
+				<pos x="10.5" y="7.25"/>
+				<in1 component_id="690"/>
+				<in2 component_id="723"/>
+				<in3 component_id="692"/>
+			</c59>
+			<c60 id="724" e="(x&amp;y)|(!x&amp;z&amp;w)">
+				<pos x="-8" y="1.5"/>
+				<in1 component_id="235"/>
+				<in2 component_id="119"/>
+				<in3 component_id="114"/>
+				<in4 component_id="725"/>
+			</c60>
+			<c61 id="120" e="(x&amp;y)">
+				<pos x="-8" y="3.25"/>
+				<in1 component_id="235"/>
+				<in2 component_id="119"/>
+			</c61>
+			<c62 id="728" name="Throttle Mode">
+				<pos x="-8.25" y="14"/>
+				<items>
+					<i l="Set rps throttle 0 to 1">
+						<v text="111" value="111"/>
+					</i>
+					<i l="Idle and direct and no limit">
+						<v text="100" value="100"/>
+					</i>
+					<i l="Idle and direct and limit">
+						<v text="101" value="101"/>
+					</i>
+					<i l="No idle and no limit">
+						<v text="000"/>
+					</i>
+					<i l="No idle and limit">
+						<v text="001" value="1"/>
+					</i>
+				</items>
+			</c62>
+			<c63 id="731" e="x%10">
+				<pos x="-7" y="14.5"/>
+				<in1 component_id="728"/>
+			</c63>
+			<c64 id="732" e="x%100">
+				<pos x="-7" y="14"/>
+				<in1 component_id="728"/>
+			</c64>
+			<c65 id="733" e="x">
+				<pos x="-7" y="13.5"/>
+				<in1 component_id="728"/>
+			</c65>
+			<c66 id="734">
+				<pos x="-5.75" y="14.5"/>
+				<in1 component_id="731"/>
+				<min text="1" value="1"/>
+				<max text="10" value="10"/>
+			</c66>
+			<c67 id="735">
+				<pos x="-5.75" y="14"/>
+				<in1 component_id="732"/>
+				<min text="10" value="10"/>
+				<max text="12" value="12"/>
+			</c67>
+			<c68 id="736">
+				<pos x="-5.75" y="13.5"/>
+				<in1 component_id="733"/>
+				<min text="100" value="100"/>
+				<max text="112" value="112"/>
+			</c68>
+			<c69 id="737" l="Max rps limit" on="on" off="off" m="1">
+				<pos x="-4.5" y="14.5"/>
+			</c69>
+			<c70 id="738" l="RPS based" on="on" off="off" m="1">
+				<pos x="-4.5" y="14"/>
+			</c70>
+			<c71 id="739" l="IDLE" on="on" off="off" m="1">
+				<pos x="-4.5" y="13.5"/>
+			</c71>
+			<c72 id="743">
+				<pos x="-4.5" y="9.5"/>
+				<in1 component_id="746"/>
+				<in2 component_id="749"/>
+				<in3 component_id="735"/>
+			</c72>
+			<c73 id="744">
+				<pos x="-4.5" y="8.5"/>
+				<in1 component_id="747"/>
+				<in2 component_id="750"/>
+				<in3 component_id="736"/>
+			</c73>
+			<c74 id="745">
+				<pos x="-4.5" y="7.5"/>
+				<in1 component_id="748"/>
+				<in2 component_id="751"/>
+				<in3 component_id="734"/>
+			</c74>
+			<c75 id="746">
+				<pos x="-5.75" y="10"/>
+				<n text="1" value="1"/>
+			</c75>
+			<c76 id="747">
+				<pos x="-5.75" y="9"/>
+				<n text="1" value="1"/>
+			</c76>
+			<c77 id="748">
+				<pos x="-5.75" y="8"/>
+				<n text="1" value="1"/>
+			</c77>
+			<c78 id="749">
+				<pos x="-5.75" y="9.75"/>
+				<n text="0"/>
+			</c78>
+			<c79 id="750">
+				<pos x="-5.75" y="8.75"/>
+				<n text="0"/>
+			</c79>
+			<c80 id="751">
+				<pos x="-5.75" y="7.75"/>
+				<n text="60" value="60"/>
+			</c80>
+			<c81 id="752" e="lerp(0,max(b,c*-0.1),clamp(y+1-z,a,1))+lerp(lerp(0,min(abs(x)*(1-c),1),clamp((y-z)*5,a,1)),0,clamp((w-100)/10,0,1))">
+				<pos x="13.25" y="9.25"/>
+				<in1 component_id="676"/>
+				<in2 component_id="806"/>
+				<in3 component_id="74"/>
+				<in4 component_id="490"/>
+				<in5 component_id="753"/>
+				<in6 component_id="723"/>
+				<in7 component_id="743"/>
+			</c81>
+			<c82 id="753">
+				<pos x="12" y="9.25"/>
+				<in1 component_id="754"/>
+				<in2 component_id="755"/>
+				<in3 component_id="734"/>
+			</c82>
+			<c83 id="754">
+				<pos x="10.75" y="10"/>
+				<n text="0"/>
+			</c83>
+			<c84 id="755">
+				<pos x="10.75" y="9.5"/>
+				<n text="1" value="1"/>
+			</c84>
+			<c85 id="72" name="Idle RPS">
+				<pos x="-4.5" y="11.5"/>
+				<min text="3" value="3"/>
+				<max text="20" value="20"/>
+				<int text="0.2" value="0.2"/>
+				<v text="3" value="3"/>
+			</c85>
+			<c86 id="313" name="Max RPS ">
+				<pos x="-4.5" y="12"/>
+				<min text="3.2" value="3.2"/>
+				<max text="60" value="60"/>
+				<int text="0.5" value="0.5"/>
+				<v text="20" value="20"/>
+			</c86>
+			<c87 id="434" name="RPS Pid adjustments, Reduce if over shooting">
+				<pos x="6" y="8.25"/>
+				<min text="0"/>
+				<max text="100" value="100"/>
+				<int text="1" value="1"/>
+				<v text="100" value="100"/>
+			</c87>
+			<c88 id="194" name="Low engine load AFR">
+				<pos x="16" y="12.25"/>
+				<min text="13" value="13"/>
+				<max text="15" value="15"/>
+				<int text="0.1" value="0.1"/>
+				<v text="15" value="15"/>
+			</c88>
+			<c89 id="195" name="High engine load AFR">
+				<pos x="16" y="11.75"/>
+				<min text="12" value="12"/>
+				<max text="14" value="14"/>
+				<int text="0.1" value="0.1"/>
+				<v text="12.9" value="12.900001"/>
+			</c89>
+			<c90 id="684" name="Aggresiveness to maintain Desired AFR">
+				<pos x="16" y="11.25"/>
+				<min text="1" value="1"/>
+				<max text="100" value="100"/>
+				<int text="1" value="1"/>
+				<v text="50" value="50"/>
+			</c90>
+			<c91 id="639" n="Throttle back to main temps below 106C" v="true">
+				<pos x="-5.75" y="10.5"/>
+			</c91>
+			<c92 id="640" n="Engine shutoff at 110C" v="true">
+				<pos x="-13.5" y="8"/>
+			</c92>
+			<c93 id="725" n="Motor starter cool engine if shutoff" on="yes" off="no" v="true">
+				<pos x="-9.25" y="1.5"/>
+			</c93>
+			<c94 id="109" name="Temp for Fans to turn on">
+				<pos x="-16" y="5"/>
+				<min text="20" value="20"/>
+				<max text="80" value="80"/>
+				<int text="1" value="1"/>
+				<v text="60" value="60"/>
+			</c94>
+			<c95 id="689" n="Number of cylinders for L/S calculation">
+				<pos x="-3.75" y="16.5"/>
+				<v text="8" value="8"/>
+			</c95>
+			<c96 id="679" name="Min RPS for Clutch">
+				<pos x="1.75" y="13.25"/>
+				<min text="2.5" value="2.5"/>
+				<max text="10" value="10"/>
+				<int text="0.1" value="0.1"/>
+				<v text="3" value="3"/>
+			</c96>
+			<c97 id="680" name="clutch max output (0-100%)">
+				<pos x="1.75" y="12.75"/>
+				<min text="60" value="60"/>
+				<max text="100" value="100"/>
+				<int text="0.5" value="0.5"/>
+				<v text="100" value="100"/>
+			</c97>
+			<c98 id="686" n="Display Settings" v="----------------------------">
+				<pos y="23.75"/>
+			</c98>
+			<c99 id="798">
+				<pos x="1.75" y="8.75"/>
+				<n text="1" value="1"/>
+			</c99>
+			<c100 id="799">
+				<pos x="3" y="8"/>
+				<in1 component_id="690"/>
+				<in2 component_id="800"/>
+			</c100>
+			<c101 id="800">
+				<pos x="1.75" y="8"/>
+				<n text="0"/>
+			</c101>
+			<c102 id="801">
+				<pos x="3" y="8.75"/>
+				<in1 component_id="692"/>
+				<in2 component_id="798"/>
+			</c102>
+			<c103 id="802">
+				<pos x="1.75" y="6.25"/>
+				<n text="-0.05" value="-0.05"/>
+			</c103>
+			<c104 id="803">
+				<pos x="3" y="6.25"/>
+				<in1 component_id="692"/>
+				<in2 component_id="802"/>
+			</c104>
+			<c105 id="804">
+				<pos x="1.75" y="7"/>
+				<n text="0.5" value="0.5"/>
+			</c105>
+			<c106 id="805">
+				<pos x="3" y="7"/>
+				<in1 component_id="89"/>
+				<in2 component_id="804"/>
+			</c106>
+			<c107 id="806">
+				<pos x="12" y="10.25"/>
+				<in1 component_id="809"/>
+				<in2 component_id="313"/>
+				<in3 component_id="735"/>
+			</c107>
+			<c108 id="809" e="x+lerp(3,0,y/100)">
+				<pos x="10.75" y="10.5"/>
+				<in1 component_id="484"/>
+				<in2 component_id="434"/>
+			</c108>
+			<c109 id="813" l="Version number" on="4F" m="1">
+				<pos y="26.25"/>
+			</c109>
+			<c110 id="814" l="Version Date" on="30/05" off="25" m="1">
+				<pos x="1.25" y="26.25"/>
+			</c110>
+			<c111 id="815" n="Default Engine Speed Unit" on="RPM" off="RPS" v="true">
+				<pos y="23.25"/>
+			</c111>
+			<c112 id="584" n="Background RGB" v="95,95,95">
+				<pos y="22.75"/>
+			</c112>
+			<c113 id="585" n="Text" v="233,233,227">
+				<pos y="22.25"/>
+			</c113>
+			<c114 id="597" n="Title" v="117, 171, 58">
+				<pos y="21.75"/>
+			</c114>
+			<c115 id="598" n="Instrument text" v="160,99,90">
+				<pos y="21.25"/>
+			</c115>
+			<c116 id="595" n="Warn bad" v="255,0,0">
+				<pos y="20.75"/>
+			</c116>
+			<c117 id="588" n="Dial limit" v="254, 41, 7">
+				<pos x="1.25" y="22.75"/>
+			</c117>
+			<c118 id="586" n="Needle" v="238, 244, 246">
+				<pos x="1.25" y="22.25"/>
+			</c118>
+			<c119 id="599" n="Dial dash" v="248,148,48">
+				<pos x="1.25" y="21.75"/>
+			</c119>
+			<c120 id="587" n="Fuel border" v="248,148,48">
+				<pos x="2.5" y="22.75"/>
+			</c120>
+			<c121 id="589" n="Fuel fill" v="248,158,98">
+				<pos x="2.5" y="22.25"/>
+			</c121>
+			<c122 id="600" n="Temp border" v="248,148,48">
+				<pos x="3.75" y="22.75"/>
+			</c122>
+			<c123 id="601" n="Temp fill" v="160,99,90">
+				<pos x="3.75" y="22.25"/>
+			</c123>
+			<c124 id="811" n="Engine name" v="Sharp ECU">
+				<pos x="1.25" y="21.25"/>
+			</c124>
+			<c125 id="608" l="ECU Status" on="on" off="off">
+				<pos x="-11" y="8.25"/>
+				<in1 component_id="235"/>
+			</c125>
+			<c126 id="78" l="Throttle out">
+				<pos x="13.25" y="11.5"/>
+				<in1 component_id="752"/>
+			</c126>
+			<c127 id="203" l="Eng Temp">
+				<pos x="-14.75" y="8"/>
+				<in1 component_id="106"/>
+			</c127>
+			<c128 id="83" l="Engine RPS">
+				<pos x="-1.5" y="13.75"/>
+				<in1 component_id="74"/>
+			</c128>
+			<c129 id="86" l="Demand RPS">
+				<pos x="-1.5" y="13"/>
+				<in1 component_id="484"/>
+			</c129>
+			<c130 id="15" l="Air/Fuel Ratio">
+				<pos x="19" y="13"/>
+				<in1 component_id="461"/>
+			</c130>
+			<c131 id="665" l="Litres / Sec">
+				<pos x="-1.25" y="16.5"/>
+				<in1 component_id="661"/>
+			</c131>
+			<c132 id="232" l="High engine temp" m="1">
+				<pos x="-13.5" y="6"/>
+				<in1 component_id="190"/>
+			</c132>
+			<c133 id="233" l="Critical engine temp" on="Allowing engine to cool" m="1">
+				<pos x="-12.25" y="8"/>
+				<in1 component_id="114"/>
+			</c133>
+			<c134 id="816" l="Starter motor" on="on" m="1">
+				<pos x="-6.75" y="1.75"/>
+				<in1 component_id="724"/>
+			</c134>
+			<c135 id="817" l="Fans" on="on" m="1">
+				<pos x="-13.5" y="4.75"/>
+				<in1 component_id="107"/>
+			</c135>
+			<c136 id="819">
+				<pos x="7.5" y="7.5"/>
+				<in1 component_id="703"/>
+				<in2 component_id="235"/>
+			</c136>
+		</component_states>
+		<component_bridge_states>
+			<c0 id="2">
+				<pos x="13" y="13.25"/>
+			</c0>
+			<c1 id="7">
+				<pos x="21.5" y="13"/>
+				<in1 component_id="237"/>
+			</c1>
+			<c2 id="8">
+				<pos x="21.5" y="14"/>
+				<in1 component_id="236"/>
+			</c2>
+			<c3 id="74">
+				<pos x="-3" y="12.75"/>
+			</c3>
+			<c4 id="97">
+				<pos x="-8.5" y="8.75"/>
+				<in1 component_id="142"/>
+			</c4>
+			<c5 id="101">
+				<pos x="-5.5" y="2.75"/>
+				<in1 component_id="613"/>
+			</c5>
+			<c6 id="103">
+				<pos x="-13.5" y="5.25"/>
+				<in1 component_id="107"/>
+			</c6>
+			<c7 id="174">
+				<pos x="1.25" y="24.25"/>
+				<in1 component_id="266" node_index="1"/>
+			</c7>
+			<c8 id="283">
+				<pos x="-3.75" y="24.5"/>
+			</c8>
+			<c9 id="364">
+				<pos x="-11" y="7.75"/>
+				<in1 component_id="235"/>
+			</c9>
+			<c10 id="367">
+				<pos x="6.25" y="13.5"/>
+				<in1 component_id="634"/>
+			</c10>
+			<c11 id="392">
+				<pos x="-3.75" y="21.75"/>
+			</c11>
+			<c12 id="394">
+				<pos x="-3.75" y="21.25"/>
+			</c12>
+			<c13 id="396">
+				<pos x="-3.75" y="20.75"/>
+			</c13>
+			<c14 id="414">
+				<pos x="-13.5" y="6.75"/>
+			</c14>
+			<c15 id="676">
+				<pos x="-4.5" y="12.5"/>
+			</c15>
+			<c16 id="682">
+				<pos x="-6.75" y="4"/>
+				<in1 component_id="120"/>
+			</c16>
+			<c17 id="688">
+				<pos x="-2.5" y="20.25"/>
+			</c17>
+			<c18 id="722">
+				<pos x="1.25" y="25.25"/>
+				<in1 component_id="717"/>
+			</c18>
+		</component_bridge_states>
+		<group_states/>
+	</group>
+</microprocessor>
+
