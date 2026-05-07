@@ -18,8 +18,8 @@ This project provides a real-time engine dashboard featuring:
 
 ![Dashboard](Images/573090_20260507150212_1.png)
 ![Engine Running](Images/573090_20260507150303_1.png)
-![internal logic](Images/573090_20260507144803_1.png)
 ![internal logic](Images/573090_20260507152142_1.png)
+![internal logic](Images/573090_20260507144803_1.png)
 ---
 
 
